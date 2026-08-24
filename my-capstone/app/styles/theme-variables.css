@@ -1,0 +1,103 @@
+/* =========================================================
+   Theme variables — paste into app/globals.css
+   Four "paper stocks" (cream / kraft / clay / walnut), each
+   with a light ("Day") and dark ("Night") rendering.
+   ========================================================= */
+
+:root {
+  /* Fallback before the inline script / ThemeProvider sets attributes */
+  --bg: #f7f1e5;
+  --text: #3a2c1f;
+  --card: #fffdf8;
+  --border: #e4d8c2;
+  --accent: #c1652f;
+  --accent-ink: #fff8ee;
+
+  color-scheme: light;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* ---------------- Cream ---------------- */
+html[data-swatch="cream"][data-mode="light"] {
+  --bg: #f7f1e5;
+  --text: #3a2c1f;
+  --card: #fffdf8;
+  --border: #e4d8c2;
+  color-scheme: light;
+}
+html[data-swatch="cream"][data-mode="dark"] {
+  --bg: #241c14;
+  --text: #f2e9da;
+  --card: #2e2419;
+  --border: #4a3b29;
+  color-scheme: dark;
+}
+
+/* ---------------- Kraft ---------------- */
+html[data-swatch="kraft"][data-mode="light"] {
+  --bg: #efe1c4;
+  --text: #3a2c1f;
+  --card: #f8efda;
+  --border: #dcc7a0;
+  color-scheme: light;
+}
+html[data-swatch="kraft"][data-mode="dark"] {
+  --bg: #2b2013;
+  --text: #f1e6ce;
+  --card: #362a1b;
+  --border: #4f3e27;
+  color-scheme: dark;
+}
+
+/* ---------------- Clay ---------------- */
+html[data-swatch="clay"][data-mode="light"] {
+  --bg: #f5dfcf;
+  --text: #3e2a20;
+  --card: #fceee2;
+  --border: #e3bca0;
+  color-scheme: light;
+}
+html[data-swatch="clay"][data-mode="dark"] {
+  --bg: #2e1d16;
+  --text: #f5e2d6;
+  --card: #3a2620;
+  --border: #5a3a2c;
+  color-scheme: dark;
+}
+
+/* ---------------- Walnut ---------------- */
+html[data-swatch="walnut"][data-mode="light"] {
+  --bg: #e4d2bc;
+  --text: #2e2015;
+  --card: #f1e4d0;
+  --border: #c9ad8b;
+  color-scheme: light;
+}
+html[data-swatch="walnut"][data-mode="dark"] {
+  --bg: #1f160f;
+  --text: #efdfc9;
+  --card: #2a1f15;
+  --border: #4a3626;
+  color-scheme: dark;
+}
+
+/* Accent stays consistent across stocks for brand cohesion */
+html {
+  --accent: #c1652f;
+  --accent-ink: #fff8ee;
+}
+
+/* Convenience utility classes, if you don't already have equivalents */
+.themed-bg {
+  background: var(--bg);
+  color: var(--text);
+}
+.themed-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+}

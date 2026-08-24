@@ -1,0 +1,211 @@
+.wrap {
+  position: fixed;
+  right: clamp(1rem, 4vw, 2rem);
+  bottom: clamp(1rem, 4vw, 2rem);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+/* -------------------- trigger button -------------------- */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.25);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.trigger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.3);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+
+/* -------------------- panel -------------------- */
+
+.panel {
+  width: 15.5rem;
+  padding: 1.1rem 1.1rem 1rem;
+  border-radius: 1.1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.35);
+  font-family: var(--font-body, "Baloo 2", sans-serif);
+  animation: rise 160ms ease;
+  transform-origin: bottom right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display, "Fredoka", sans-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.divider {
+  height: 1px;
+  margin: 0.9rem 0;
+  background: var(--border);
+}
+
+/* -------------------- swatch chips -------------------- */
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.chip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.3rem 0.5rem;
+  border-radius: 0.7rem;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 150ms ease;
+  transform: rotate(0deg);
+}
+
+.chip:hover {
+  transform: rotate(var(--chip-rotate)) translateY(-2px);
+}
+
+.chip[data-active="true"] {
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--chip-color) 18%, transparent);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.chipSwatch {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.5rem;
+  background: var(--chip-color);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.chipLabel {
+  font-size: 0.68rem;
+  color: var(--text);
+  line-height: 1;
+}
+
+.chipCheck {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------------- mode toggle -------------------- */
+
+.modeToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+}
+
+.modeToggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.modeTrack {
+  position: relative;
+  width: 2.6rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background 150ms ease;
+}
+
+.modeTrack[data-mode="dark"] {
+  background: var(--accent);
+}
+
+.modeKnob {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  transition: transform 150ms ease;
+  transform: translateX(0);
+}
+
+.modeTrack[data-mode="dark"] .modeKnob {
+  transform: translateX(1.2rem);
+}
+
+.modeLabel {
+  font-family: var(--font-display, "Fredoka", sans-serif);
+  font-size: 0.85rem;
+  color: var(--text);
+}
