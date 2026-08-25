@@ -1,74 +1,115 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Theme tokens (Cream + Day is the default / fallback before the
+   ThemeScript in <head> sets data-swatch / data-mode on <html>)
+   --------------------------------------------------------------- */
 :root {
-  --background: #f4eee0;
-  --foreground: #302820;
-  --card: #fffaf0;
-  --text: #302820;
-  --border: #d8c4a0;
-  --accent: #8c6a4e;
-  --accent-ink: #fffaf0;
+  --background: #f7f1e5;
+  --foreground: #3a2c1f;
+  --card: #fffdf8;
+  --border: #e4d8c2;
+  --accent: #c1652f;
+  --accent-ink: #fff8ee;
 }
 
-/* PAPER STOCKS */
-
-html[data-swatch="cream"] {
-  --background: #f4eee0;
-  --card: #fffaf0;
-  --text: #302820;
-  --border: #d8c4a0;
-  --accent: #8c6a4e;
-  --accent-ink: #fffaf0;
+/* Expose the tokens above as Tailwind utilities: bg-background,
+   text-foreground, bg-card, border-border, bg-accent, text-accent-ink,
+   font-display, font-body. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-html[data-swatch="kraft"] {
-  --background: #d8c4a0;
-  --card: #f4eee0;
-  --text: #302820;
-  --border: #8c6a4e;
-  --accent: #8c6a4e;
-  --accent-ink: #fffaf0;
+/* ---------------------------------------------------------------
+   Paper stocks. Each swatch defines a Day (light) and Night (dark)
+   rendering. This is the whole theme system — intentionally not
+   using Tailwind's built-in dark: variant / prefers-color-scheme,
+   since the visitor's explicit choice should always win.
+   --------------------------------------------------------------- */
+
+/* Cream */
+html[data-swatch="cream"][data-mode="light"] {
+  --background: #f7f1e5;
+  --foreground: #3a2c1f;
+  --card: #fffdf8;
+  --border: #e4d8c2;
+  color-scheme: light;
+}
+html[data-swatch="cream"][data-mode="dark"] {
+  --background: #241c14;
+  --foreground: #f2e9da;
+  --card: #2e2419;
+  --border: #4a3b29;
+  color-scheme: dark;
 }
 
-html[data-swatch="clay"] {
-  --background: #e9bba2;
-  --card: #fff5ef;
-  --text: #302820;
-  --border: #c88f73;
-  --accent: #8c6a4e;
-  --accent-ink: #fffaf0;
+/* Kraft */
+html[data-swatch="kraft"][data-mode="light"] {
+  --background: #efe1c4;
+  --foreground: #3a2c1f;
+  --card: #f8efda;
+  --border: #dcc7a0;
+  color-scheme: light;
+}
+html[data-swatch="kraft"][data-mode="dark"] {
+  --background: #2b2013;
+  --foreground: #f1e6ce;
+  --card: #362a1b;
+  --border: #4f3e27;
+  color-scheme: dark;
 }
 
-html[data-swatch="walnut"] {
-  --background: #8c6a4e;
-  --card: #6f513c;
-  --text: #f4eee0;
-  --border: #d8c4a0;
-  --accent: #d8c4a0;
-  --accent-ink: #302820;
+/* Clay */
+html[data-swatch="clay"][data-mode="light"] {
+  --background: #f5dfcf;
+  --foreground: #3e2a20;
+  --card: #fceee2;
+  --border: #e3bca0;
+  color-scheme: light;
+}
+html[data-swatch="clay"][data-mode="dark"] {
+  --background: #2e1d16;
+  --foreground: #f5e2d6;
+  --card: #3a2620;
+  --border: #5a3a2c;
+  color-scheme: dark;
 }
 
-/* DARK MODE */
-
-html[data-mode="dark"] {
-  --background: #17120f;
-  --card: #241c17;
-  --text: #f4eee0;
-  --border: #5f4939;
-  --accent: #d8c4a0;
-  --accent-ink: #302820;
+/* Walnut */
+html[data-swatch="walnut"][data-mode="light"] {
+  --background: #e4d2bc;
+  --foreground: #2e2015;
+  --card: #f1e4d0;
+  --border: #c9ad8b;
+  color-scheme: light;
+}
+html[data-swatch="walnut"][data-mode="dark"] {
+  --background: #1f160f;
+  --foreground: #efdfc9;
+  --card: #2a1f15;
+  --border: #4a3626;
+  color-scheme: dark;
 }
 
-/* GLOBAL PAGE */
+/* Accent stays consistent across stocks so links/buttons/focus rings
+   read as one brand regardless of paper stock or mode. */
+html {
+  --accent: #c1652f;
+  --accent-ink: #fff8ee;
+}
 
-html,
 body {
-  min-height: 100%;
-}
-
-body {
-  margin: 0;
   background: var(--background);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
