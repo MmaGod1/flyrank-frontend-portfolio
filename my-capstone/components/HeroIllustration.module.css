@@ -1,0 +1,266 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.frame {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ------------------------------------------------------------------
+   10s loop, ease-in-out, infinite:
+   0–20%   brief (taking notes)
+   28–50%  build (typing / code on screen)
+   58–76%  result (finished interface, glow)
+   84–96%  present (gesture + smile)
+   Each pair overlaps for a smooth crossfade rather than a hard cut,
+   and 100% matches 0% so the loop has no jump.
+   ------------------------------------------------------------------ */
+
+.brief {
+  opacity: 1;
+  animation: heroBrief 10s ease-in-out infinite;
+}
+@keyframes heroBrief {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0;
+  }
+  96% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.build {
+  opacity: 0;
+  animation: heroBuild 10s ease-in-out infinite;
+}
+@keyframes heroBuild {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  28% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  58% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.result {
+  opacity: 0;
+  animation: heroResult 10s ease-in-out infinite;
+}
+@keyframes heroResult {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  58% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.present {
+  opacity: 0;
+  animation: heroPresent 10s ease-in-out infinite;
+}
+@keyframes heroPresent {
+  0%,
+  76% {
+    opacity: 0;
+  }
+  84% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: freeze on the finished / presenting frame. */
+@media (prefers-reduced-motion: reduce) {
+  .brief,
+  .build,
+  .result,
+  .present {
+    animation: none !important;
+  }
+  .brief,
+  .build,
+  .result {
+    opacity: 0;
+  }
+  .present {
+    opacity: 1;
+  }
+}
+
+.frame {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Thin translucent veil so the photo reads as background texture rather
+   than a sharp standalone image — a uniform tint everywhere, plus a
+   stronger fade to fully solid at the bottom edge so it blends into the
+   section below. Deliberately avoids color-mix()/relative-color syntax
+   here, since unsupported color functions make the whole `background`
+   declaration invalid (and silently drop) rather than degrade gracefully. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom, transparent 50%, var(--background) 100%);
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--background);
+  opacity: 0.22;
+}
+
+/* ------------------------------------------------------------------
+   10s loop, ease-in-out, infinite:
+   0–20%   brief (taking notes)
+   28–50%  build (typing / code on screen)
+   58–76%  result (finished interface, glow)
+   84–96%  present (gesture + smile)
+   Each pair overlaps for a smooth crossfade rather than a hard cut,
+   and 100% matches 0% so the loop has no jump.
+   ------------------------------------------------------------------ */
+
+.brief {
+  opacity: 1;
+  animation: heroBrief 10s ease-in-out infinite;
+}
+@keyframes heroBrief {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0;
+  }
+  96% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.build {
+  opacity: 0;
+  animation: heroBuild 10s ease-in-out infinite;
+}
+@keyframes heroBuild {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  28% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  58% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.result {
+  opacity: 0;
+  animation: heroResult 10s ease-in-out infinite;
+}
+@keyframes heroResult {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  58% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.present {
+  opacity: 0;
+  animation: heroPresent 10s ease-in-out infinite;
+}
+@keyframes heroPresent {
+  0%,
+  76% {
+    opacity: 0;
+  }
+  84% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: freeze on the finished / presenting frame. */
+@media (prefers-reduced-motion: reduce) {
+  .brief,
+  .build,
+  .result,
+  .present {
+    animation: none !important;
+  }
+  .brief,
+  .build,
+  .result {
+    opacity: 0;
+  }
+  .present {
+    opacity: 1;
+  }
+}

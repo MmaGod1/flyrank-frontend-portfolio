@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ExperienceEntry } from "@/components/ExperienceEntry";
+import { HeroIllustration } from "@/components/HeroIllustration";
 import {
   projects,
   experience,
@@ -12,16 +13,23 @@ import {
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* ---------------- Hero ---------------- */}
-      <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+      {/* ---------------- Hero billboard ---------------- */}
+      <section className="w-full border-b border-border bg-card">
+        <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+          <HeroIllustration />
+        </div>
+      </section>
+
+      {/* ---------------- Hero text ---------------- */}
+      <section className="mx-auto w-full max-w-5xl px-4 py-16 text-center sm:px-6 sm:py-20">
         <h1 className="font-display text-4xl text-foreground sm:text-5xl">
           Mmachukwu
         </h1>
-        <p className="mt-4 max-w-xl text-lg text-foreground/80">
+        <p className="mx-auto mt-4 max-w-xl text-lg text-foreground/80">
           I build user-friendly web applications that are easy to navigate
           and designed to meet both user needs and business goals.
         </p>
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button href={cvHref}>Get my CV</Button>
           <Button href="#contact" variant="secondary">
             Get in touch
