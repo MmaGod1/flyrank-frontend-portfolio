@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactEmail } from "@/lib/portfolio-data";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface ContactPayload {
   name?: unknown;
   email?: unknown;
@@ -21,7 +19,9 @@ function isNonEmptyString(value: unknown, maxLength: number): value is string {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
     console.error("Missing RESEND_API_KEY environment variable.");
     return NextResponse.json(
       { error: "The contact form is not configured yet. Please try emailing directly." },
@@ -51,6 +51,11 @@ export async function POST(request: Request) {
   const safeName = (name as string).trim();
   const safeEmail = (email as string).trim();
   const safeMessage = (message as string).trim();
+
+  // Constructed here, per-request, not at module load — avoids Vercel's
+  // build-time "collect page data" pass importing this module before
+  // the runtime environment variables are available.
+  const resend = new Resend(apiKey);
 
   try {
     const { error } = await resend.emails.send({
