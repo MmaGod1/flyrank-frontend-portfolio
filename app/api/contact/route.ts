@@ -55,7 +55,10 @@ export async function POST(request: Request) {
   // Constructed here, per-request, not at module load — avoids Vercel's
   // build-time "collect page data" pass importing this module before
   // the runtime environment variables are available.
-  const resend = new Resend(apiKey);
+  // const resend = new Resend(apiKey);
+  console.log("RESEND_API_KEY exists:", !!process.env.RESEND_API_KEY);
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     const { error } = await resend.emails.send({
