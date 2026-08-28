@@ -9,6 +9,7 @@ import {
   cvHref,
   contactEmail,
 } from "@/lib/portfolio-data";
+import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
   return (
@@ -111,15 +112,7 @@ export default function Home() {
         id="contact"
         className="mx-auto w-full max-w-5xl px-4 py-16 text-center sm:px-6 sm:py-24"
       >
-        <h2 className="font-display text-2xl text-foreground sm:text-3xl">
-          Let&apos;s work together.
-        </h2>
-        <p className="mt-3 text-foreground/80">
-          Contact me for an interview or partnership.
-        </p>
-        <div className="mt-8 flex justify-center">
-          <Button href={`mailto:${contactEmail}`}>Get in touch</Button>
-        </div>
+        <ContactSection contactEmail={contactEmail} />
       </section>
     </div>
   );

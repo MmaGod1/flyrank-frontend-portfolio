@@ -1,7 +1,3 @@
-// Placeholder content for the portfolio. Nothing here is invented history —
-// swap these values for real projects, experience details, and links as
-// they become available. Search for "Placeholder" / TODO to find every
-// spot that still needs real content.
 
 export interface Project {
   title: string;
@@ -69,7 +65,6 @@ export const skillGroups: SkillGroup[] = [
 
 // TODO: replace with a real CV file (e.g. drop it in /public and point this
 // at "/cv.pdf") or an external link once it's ready.
-export const cvHref = "#";
-
+export const cvHref = "/about";
 // TODO: replace with a real contact address.
-export const contactEmail = "your-email@example.com";
+export const contactEmail = "gmmaduchukwu@gmail.com";
