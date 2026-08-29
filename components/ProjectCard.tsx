@@ -2,6 +2,8 @@ import { Button } from "@/components/Button";
 import type { Project } from "@/lib/portfolio-data";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const hasRealLink = project.href && project.href !== "#";
+
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card">
       <div className="flex aspect-video items-center justify-center border-b border-border bg-background text-sm text-foreground/40">
@@ -27,9 +29,15 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        <Button href={project.href} variant="secondary" className="mt-1 self-start">
-          View project
-        </Button>
+        {hasRealLink ? (
+          <Button href={project.href} variant="secondary" className="mt-1 self-start">
+            View project
+          </Button>
+        ) : (
+          <span className="mt-1 self-start text-xs text-foreground/50">
+            Link coming soon
+          </span>
+        )}
       </div>
     </div>
   );
