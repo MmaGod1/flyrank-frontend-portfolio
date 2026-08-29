@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ContactForm } from "@/components/ContactForm";
 
 const buttonClasses =
-  "inline-flex items-center justify-center rounded-full px-6 py-3 font-display text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent bg-accent text-accent-ink hover:opacity-90";
+  "inline-flex items-center justify-center rounded-full px-6 py-3 font-display text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent bg-accent-strong text-accent-ink hover:opacity-90";
 
 export function ContactSection({ contactEmail }: { contactEmail: string }) {
   const [showForm, setShowForm] = useState(false);

@@ -11,6 +11,7 @@
   --border: #e4d8c2;
   --accent: #c1652f;
   --accent-ink: #fff8ee;
+  --accent-strong: #a8541f;
 }
 
 /* Expose the tokens above as Tailwind utilities: bg-background,
@@ -23,6 +24,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-accent-strong: var(--accent-strong);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
