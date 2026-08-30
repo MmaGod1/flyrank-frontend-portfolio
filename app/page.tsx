@@ -10,6 +10,8 @@ import {
   contactEmail,
 } from "@/lib/portfolio-data";
 import { ContactSection } from "@/components/ContactSection";
+import { ShaderHero } from "@/components/ShaderHero";
+import { GRADIENT_FLOW_FRAG } from "@/lib/shaders";
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
       {/* ---------------- Hero billboard ---------------- */}
       <section className="w-full border-b border-border bg-card">
         <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+          <ShaderHero fragmentShader={GRADIENT_FLOW_FRAG} className="absolute inset-0 h-full w-full" />
           <HeroIllustration />
         </div>
       </section>
